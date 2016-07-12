@@ -9,7 +9,7 @@ by the `fips.sh` script, add the `fips.sh` script and runs it. The script
 takes care of the actual NodeJS and OpenSSL installation and FIPS configuration.
 Use 'docker build' as you would with any other project:
 ```bash
-docker build -t <username_here>/<reponame_here:<tag_here> .
+docker build -t <username_here>/<reponame_here>:<tag_here> .
 ```
 
 **IMPORTANT:**
