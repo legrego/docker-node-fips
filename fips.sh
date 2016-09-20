@@ -1,9 +1,9 @@
 #!/bin/bash -e
 
 # Versions to build
-opensslfips=openssl-fips-2.0.12
-opensslcore=openssl-1.0.2h
-nodejs=node-v6.3.0
+opensslfips=$OPENSSL_FIPS_MODULE
+opensslcore=$OPEN_SSL_CORE
+nodejs=node-$NODE_VERSION
 
 # Update Ubuntu packages and ensure build tools are installed
 sudo apt-get -y update
@@ -67,24 +67,5 @@ openssl_conf = openssl_conf_section
 alg_section = evp_settings
 
 [evp_settings]
-fips_mode = yes
+fips_mode = no
 EOF
-
-
-# Try to use a disallowed function to prove the system OpenSSL is doing FIPS properly
-if openssl md5 &> /dev/null
-then
-  echo "OpenSSL did not disallow FIPS unapproved functions"
-  exit -1
-else
-  echo "OpenSSL FIPS looks good"
-fi
-
-# Ditto with Node.js
-if node -e "require('crypto').createHash('md5').update('')" &> /dev/null
-then
-  echo "Node.js did not disallow FIPS unapproved functions"
-  exit -1
-else
-  echo "Node.js FIPS mode looks good"
-fi
