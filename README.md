@@ -1,7 +1,7 @@
 # node-fips
 
 > A Dockerfile and helper script to create an Ubuntu 16.04 image with a FIPS
-compliant 6.3.0 NodeJS build.
+compliant 8.11.0 NodeJS build.
 
 ## Overview
 To build the Docker image you must have the `Dockerfile` and `fips.sh` script
@@ -10,7 +10,7 @@ The Dockerfile uses a Ubuntu 16.04 base image, installs some packages needed
 by the _fips.sh_ script, adds the _fips.sh_ script and runs it. The script
 takes care of the actual NodeJS and OpenSSL installation and FIPS configuration.
 
-* Node: `v6.3.0`
+* Node: `v8.11.0`
 * OpenSSL: `openssl-1.0.2h`
 * OpenSSL FIPS Module: `openssl-fips-2.0.12`
 
